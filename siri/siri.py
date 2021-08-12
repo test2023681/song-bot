@@ -14,7 +14,7 @@ APPER="MASTER🔍"
 OWNER="MR_JINN_OF_TG"
 GITCLONE="https://t.me/MR_JINN_OF_TG"
 B2="https://t.me/NAZRIYAMUSICS"
-BUTTON1="UPDATES"
+BUTTON1="🔍UPDATES🔎"
 
 def time_to_seconds(time):
     stringt = str(time)
@@ -27,10 +27,7 @@ async def start(client, message):
             [
                 [
                     InlineKeyboardButton(BUTTON1, url=GITCLONE)
-                 ],[
-                    InlineKeyboardButton(OWNER, url=f"https://telegram.dog/{Config.OWNER}"),
-                    InlineKeyboardButton(ABS, url=B2)
-            ]
+                 ]
           ]
         ),
         reply_to_message_id=message.message_id
