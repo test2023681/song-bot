@@ -40,7 +40,7 @@ def a(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('`Finding on database... Please Wait...`')
+    m = message.reply('`Fetching....from..my..database... Please Wait...`')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -64,7 +64,7 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[NAZRIYA 🇮🇳]" 
+            performer = f"[NAZRIYA/🇮🇳]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
@@ -79,7 +79,7 @@ def a(client, message):
         )
         print(str(e))
         return
-    m.edit("`Am... Uploading... Please Wait...`")
+    m.edit("`... Uploading... PLEASE.....BE..PATIENT...`")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
