@@ -14,7 +14,7 @@ APPER="MASTER🔍"
 OWNER="MR_JINN_OF_TG"
 GITCLONE="https://t.me/NAZRIYASUPPORT"
 B2="https://t.me/NAZRIYAMUSICS"
-BUTTON1="🔍UPDATES🔎"
+BUTTON1="🎧SUPPORT🎧"
 
 def time_to_seconds(time):
     stringt = str(time)
