@@ -12,7 +12,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 ABS="GROUP"
 APPER="MASTER🔍"
 OWNER="MR_JINN_OF_TG"
-GITCLONE="https://t.me/MR_JINN_OF_TG"
+GITCLONE="https://t.me/NAZRIYASUPPORT"
 B2="https://t.me/NAZRIYAMUSICS"
 BUTTON1="🔍UPDATES🔎"
 
