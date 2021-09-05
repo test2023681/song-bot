@@ -93,7 +93,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('**AN ERROR OCCURED!!**')
+        m.edit('**AN ERROR OCCURED REPORT THIS AT @NAZRIYASUPPORT!!**')
         print(e)
     try:
         os.remove(audio_file)
