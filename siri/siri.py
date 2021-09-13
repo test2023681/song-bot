@@ -35,7 +35,7 @@ async def start(client, message):
     )
 
 
-@Client.on_message(filters.command(['sg']))
+@Client.on_message(filters.text)
 def a(client, message):
     query = ''
     for i in message.command[1:]:
