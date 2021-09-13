@@ -26,7 +26,8 @@ async def start(client, message):
          reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(BUTTON1, url=GITCLONE)
+                    InlineKeyboardButton(BUTTON1, url=GITCLONE), 
+                    InlineKeyboardButton('Search Inline', switch_inline_query_current_chat='')
                  ]
           ]
         ),
