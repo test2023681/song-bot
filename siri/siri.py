@@ -34,14 +34,11 @@ async def start(client, message):
         reply_to_message_id=message.message_id
     )
 
-
 @Client.on_message(filters.text)
 def a(client, message):
-    query = ''
-    for i in message.command[1:]:
-        query += ' ' + str(i)
+    query=message.text
     print(query)
-    m = message.reply('`Fetching....from..my..database... Please Wait...`')
+    m = message.reply('fetching datas from m.youtube.com')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -72,21 +69,21 @@ def a(client, message):
 
         except Exception as e:
             print(e)
-            m.edit('**NO DATA FOUNDED WITH THIS TRY WITH ANOTHER !**')
+            m.edit('**👎 Nothing to found 🥺 Try with another!**')
             return
     except Exception as e:
         m.edit(
-            "**Enter Song Name with /sg Command!**"
+            "**found nothing, please try again**"
         )
         print(str(e))
         return
-    m.edit("`... Uploading... PLEASE.....BE..PATIENT...`")
+    m.edit("**m.youtube.com responded, uploading...**")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎶 <b>Title:</b> <a href="{link}">{title}</a>\n⌚ <b>Duration:</b> <code>{duration}</code>\n📻 <b>Uploaded By:</b> <a href="https://t.me/NAZRIYASONGBOT">🎧NAZRIYA🎧</a>'
+        rep = f'🎶 <b>Title:</b> <a href="{link}">{title}</a>\n⌚ <b>Duration:</b> <code>{duration}</code>\n📻 <b>Uploaded By:</b> <a href="https://t.me/mwklinks">[MwK] Song-Bot</a>'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -94,7 +91,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('**AN ERROR OCCURED REPORT THIS AT @NAZRIYASUPPORT!!**')
+        m.edit('**An Internal error occured; Report This @redbullfed!!**')
         print(e)
     try:
         os.remove(audio_file)
