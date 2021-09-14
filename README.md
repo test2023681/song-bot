@@ -8,3 +8,7 @@ through inline search on bot.
 ##### Deploy 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/MR-JINN-OF-TG/song-bot/tree/main)
+
+
+
+CAN BE FOUND ON TELEGRAM AS [NAZRIYA SONG BOT](https://t.me/NAZRIYASONGBOT) 
