@@ -34,7 +34,7 @@ async def start(client, message):
         reply_to_message_id=message.message_id
     )
 
-@Client.on_message(filters.text)
+@Client.on_message(filters.command(['sg']))
 def a(client, message):
     query=message.text
     print(query)
