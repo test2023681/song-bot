@@ -2,7 +2,7 @@ import os
 import aiofiles
 import aiohttp
 from pyrogram import filters
-
+from pyrogram import Client
 ARQ = "https://thearq.tech/"
 
 async def fetch(url):
