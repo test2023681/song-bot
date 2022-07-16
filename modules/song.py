@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 
-import youtube_dl
+import yt_dlp
 from youtube_search import YoutubeSearch
 import requests
 
@@ -9,12 +9,12 @@ import time
 from config import Config
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-ABS="GROUP"
-APPER="MASTER🔍"
-OWNER="MR_JINN_OF_TG"
-GITCLONE="https://t.me/NAZRIYASUPPORT"
-B2="https://t.me/NAZRIYAMUSICS"
-BUTTON1="🎧SUPPORT🎧"
+ABS="Developer"
+APPER="shamilhabeeb"
+OWNER="Owner"
+GITCLONE="github.com/shamilhabeebnelli/song-bot"
+B2="telegram.dog/shamilhabeeb"
+BUTTON1="📜 Source Code 📜"
 
 def time_to_seconds(time):
     stringt = str(time)
@@ -26,19 +26,24 @@ async def start(client, message):
          reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton(BUTTON1, url=GITCLONE), 
-                    InlineKeyboardButton('Search Inline', switch_inline_query_current_chat='')
-                 ]
+                    InlineKeyboardButton(BUTTON1, url=GITCLONE)
+                 ],[
+                    InlineKeyboardButton(OWNER, url=f"https://telegram.dog/{Config.OWNER}"),
+                    InlineKeyboardButton(ABS, url=B2)
+            ]
           ]
         ),
         reply_to_message_id=message.message_id
     )
 
-@Client.on_message(filters.command(['sg']))
+
+@Client.on_message(filters.command(['song']))
 def a(client, message):
-    query=message.text
+    query = ''
+    for i in message.command[1:]:
+        query += ' ' + str(i)
     print(query)
-    m = message.reply('fetching datas from m.youtube.com')
+    m = message.reply('`Searching... Please Wait...`')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -62,28 +67,28 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[NAZRIYA/🇮🇳]" 
+            performer = f"[@mwkBoTs]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
 
         except Exception as e:
             print(e)
-            m.edit('**NO DATA FOUNDED WITH THIS TRY WITH ANOTHER !**')
+            m.edit('**👎 Nothing found Retry with another !**')
             return
     except Exception as e:
         m.edit(
-            "**found nothing, please try again**"
+            "**Enter Song Name with /song Command!**"
         )
         print(str(e))
         return
-    m.edit("**m.youtube.com responded, uploading...**")
+    m.edit("`Bruh... Uploading... Please Wait...`")
     try:
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎶 <b>Title:</b> <a href="{link}">{title}</a>\n⌚ <b>Duration:</b> <code>{duration}</code>\n📻 <b>Uploaded By:</b> <a href="https://t.me/NAZRIYASONGBOT">NAZRIYA</a>'
+        rep = f'🎶 <b>Title:</b> <a href="{link}">{title}</a>\n⌚ <b>Duration:</b> <code>{duration}</code>\n📻 <b>Uploaded By:</b> <a href="https://t.me/mwklinks">MwK Song Bot</a>'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -91,7 +96,7 @@ def a(client, message):
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('**AN ERROR OCCURED REPORT THIS AT @NAZRIYASUPPORT!!**')
+        m.edit('**An internal Error Occured, Report This @redbullfed!!**')
         print(e)
     try:
         os.remove(audio_file)
